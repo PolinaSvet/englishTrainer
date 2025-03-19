@@ -51,12 +51,6 @@ type server struct {
 
 var SRV server
 
-/*var (
-	Sessions = make(map[string]*Session)
-	Mutex    sync.RWMutex
-	DbPool   *postgres.Storage
-)*/
-
 func InitData() {
 	connString := os.Getenv("PG_URL_DBLANGUAGE")
 
