@@ -6,7 +6,7 @@
 ![scheme](./doc/img/001.PNG)
 
 2. Учим
-![scheme](./doc/img/002.png)
+![scheme](./doc/img/001.png)
 
 3. Фиксируем результат в БД
 ![scheme](./doc/img/003.png)
