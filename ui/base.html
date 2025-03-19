@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ block "title" . }}Flashcards{{ end }}</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    {{ block "stylesheet" . }}{{ end }}
+    <script src="/static/js/script.js"></script>
+    {{ block "scripts" . }}{{ end }}
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/cards">Cards</a></li>
+                <li id="auth-menu">
+                    <a href="#" id="auth-link">Login</a>
+                    <ul id="auth-dropdown" class="dropdown-menu">
+                        <li id="auth-user" class="dropdown-header-l1">User</li>
+                        <li id="auth-mail" class="dropdown-header-l2">Mail</li>
+                        <li id="auth-login"><a href="/auth?mode=login">Login</a></li>
+                        <li id="auth-registration"><a href="/auth?mode=register">Registration</a></li>
+                        <li id="auth-logout"><a href="/auth?mode=logout">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {{ block "content" . }}{{ end }}
+    </main>
+    {{ block "footer_scripts" . }}{{ end }}
+     <script src="/static/js/auth_base.js"></script>
+
+</body>
+</html>

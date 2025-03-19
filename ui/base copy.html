@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ block "title" . }}Flashcards{{ end }}</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    {{ block "stylesheet" . }}{{ end }}
+    <script src="/static/js/script.js"></script>
+    {{ block "scripts" . }}{{ end }}
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/cards">Cards</a></li>
+                <li id="auth-menu">
+                    <a href="#" id="auth-link">Login</a>
+                    <ul id="auth-dropdown" class="dropdown-menu">
+                        <li class="dropdown-header-l1">User</li> 
+                        <li class="dropdown-header-l2">Mail</li> 
+                        <li><a href="/login">
+                            <svg class="icon" viewBox="0 0 24 24" width="16" height="16">
+                                <path d="M10 17l5-5-5-5v10z"/>
+                            </svg>
+                            Login
+                        </a></li>
+
+                        <li><a href="/registration">
+                            <svg class="icon" viewBox="0 0 24 24" width="16" height="16">
+                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                            </svg>
+                            Registration
+                        </a></li>
+                        
+                        <li class="dropdown-footer"><a href="#" onclick="logout()">
+                            <svg class="icon" viewBox="0 0 24 24" width="16" height="16">
+                                <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+                            </svg>
+                            Logout
+                        </a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {{ block "content" . }}{{ end }}
+    </main>
+    {{ block "footer_scripts" . }}{{ end }}
+    <script src="/static/js/registration_menu.js"></script>
+
+</body>
+</html>

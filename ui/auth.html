@@ -1,0 +1,45 @@
+{{ define "title" }}{{ .Auth.Title }}{{ end }}
+
+{{ block "stylesheet" . }}
+<link rel="stylesheet" href="/static/css/auth.css">
+{{ end }}
+
+{{ define "content" }}
+<div class="adaptive-container">
+    <div class="item" id="card-container">
+        <h1 id="authTitel">{{ .Auth.Title }}</h1>
+        <form id="authForm">
+            {{ if eq .Auth.Mode "register" }}
+            <div class="form-row">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            {{ end }}
+            {{ if or (eq .Auth.Mode "register") (eq .Auth.Mode "login")}}
+            <div class="form-row">
+                <label for="mail">Email:</label>
+                <input type="email" id="mail" name="mail" required>
+            </div>
+            {{ end }}
+            {{ if eq .Auth.Mode "register" }}
+            <div class="form-row" style="display: none">
+                <label for="telega">Telegram:</label>
+                <input type="text" id="telega" name="telega">
+            </div>
+            {{ end }}
+            {{ if or (eq .Auth.Mode "register") (eq .Auth.Mode "login")}}
+            <div class="form-row">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            {{ end }}
+            <div id="authError" class="error"></div>
+            <button type="submit">{{ .Auth.ButtonText }}</button>
+        </form>
+    </div>
+</div>
+{{ end }}
+
+{{ define "footer_scripts" }}
+<script src="/static/js/auth.js"></script>
+{{ end }}

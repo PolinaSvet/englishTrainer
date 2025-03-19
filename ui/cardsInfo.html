@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карточка</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .card {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #f9f9f9;
+        }
+        .card h2 {
+            margin-top: 0;
+        }
+        .card p {
+            margin: 5px 0;
+        }
+        .example {
+            margin-left: 20px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Карточка #{{.Id}}</h2>
+        <p><strong>Слово:</strong> {{.Word}}</p>
+        <p><strong>Транскрипция:</strong> {{.Transcription}}</p>
+        <p><strong>Перевод:</strong> {{.Translation}}</p>
+        <p><strong>Метка:</strong> {{.MarkName}} (ID: {{.MarkId}})</p>
+        <p><strong>Буква:</strong> {{.LetterName}} (ID: {{.LetterId}})</p>
+        <p><strong>Дата добавления:</strong> {{.DtAddTxt}} ({{.DtAdd}})</p>
+        <p><strong>Статус:</strong> {{if .Enable}}Активна{{else}}Неактивна{{end}}</p>
+        <p><strong>Попыток:</strong> {{.Attempt}}</p>
+        <p><strong>Угадано:</strong> {{if .Guess}}Да{{else}}Нет{{end}}</p>
+
+        <h3>Примеры использования:</h3>
+        {{range .Example}}
+            <div class="example">
+                <p><strong>Пример 1:</strong> {{.Ex1}}</p>
+                <p><strong>Пример 2:</strong> {{.Ex2}}</p>
+            </div>
+        {{else}}
+            <p>Примеры отсутствуют.</p>
+        {{end}}
+    </div>
+</body>
+</html>

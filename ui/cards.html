@@ -1,0 +1,77 @@
+{{ define "title" }}Cards{{ end }}
+
+{{ block "scripts" . }}
+<script src="/static/js/cards.js"></script>
+{{ end }}
+
+{{ define "content" }}
+<div id="alarm-container" style="position: fixed; top: 20px; right: 20px; z-index: 1000;"></div>
+
+<div class="adaptive-container">
+    <div class="item" id="card-container">
+        <div class="card" onclick="flipCard()">
+            <div class="card__front">
+                <h1 class="card__word" id="card__word"></h1>
+                <h3 class="card__transcription" id="card__transcription"></h3>
+            </div>
+            <div class="card__back">
+                <h1 class="card__word-back" id="card__word-back"></h1>
+                <h3 class="card__translation" id="card__translation"></h3>
+            </div>
+        </div>
+        <div class="buttons">
+            <button class="button answer-button"></button>
+            <button class="button answer-button"></button>
+            <button class="button answer-button"></button>
+            <button class="button answer-button"></button>
+        </div>
+    </div>
+
+    <div class="item" id="score-container">
+        <h3 id="score-value">Score: 0/0</h3>
+    </div>
+
+    <div class="score-container item" id="words-table-container">
+        <table class="words-table" id="words-table">
+            <thead>
+                <tr>
+                    <th class="words-table__column" id="words-table-column1" onclick="sortTable('word')">En</th>
+                    <th class="words-table__column" id="words-table-column2" onclick="sortTable('transcription')"></th>
+                    <th class="words-table__column" id="words-table-column3" onclick="sortTable('translation')">Ru</th>
+                    <th style="width:5%" class="words-table__column" id="words-table-column4"></th>
+                    <th style="width:5%" class="words-table__column" id="words-table-column5" onclick="sortTable('attempt')">Try</th>
+                    <th style="width:5%" class="words-table__column" id="words-table-column6" onclick="sortTable('guess')">Ok</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Строки таблицы будут заполнены через JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="lets-container item" id="lets-container">
+        <button class="button button--common" onclick="letsGame()">Let's Go</button>
+    </div>
+
+    <div class="congrats-container item" id="congrats-container">
+        <h2 id="congrats-information"></h2>
+        <div class="buttons">
+            <button class="button" onclick="initGame()">Пройти заново</button>
+            <button class="button" onclick="sendDataToServer()">Зафиксировать результат</button>
+            <button class="button" onclick="startGame()">Следующие слова</button>
+            <button class="button" onclick="homePage()">Home</button>
+        </div>
+    </div>
+</div>
+{{ end }}
+
+{{ define "footer_scripts" }}
+<script>
+    window.cardsData = {{ .Cards.Data }};
+    window.scoreGuess = {{ .Cards.ScoreGuess }};
+    window.scoreAll = {{ .Cards.ScoreAll }};
+    window.finish = {{ .Cards.Finish }};
+    window.message = {{ .Message }};
+    initGame();
+</script>
+{{ end }}
