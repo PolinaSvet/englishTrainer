@@ -5,7 +5,7 @@
 1. Загружаем новые слова из БД</br>
 ![scheme](./doc/img/001.PNG)
 <div align="center">
-	<img src="./doc/img/001.PNG"  width="70%" height="100%">
+	<img src="./doc/img/001.PNG"  width="50%" >
 </div>
 
 3. Учим</br>
