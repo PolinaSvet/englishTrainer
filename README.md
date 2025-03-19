@@ -4,11 +4,14 @@
 
 1. Загружаем новые слова из БД</br>
 ![scheme](./doc/img/001.PNG)
+<div align="center">
+	<img src="./doc/img/001.PNG"  width="70%" height="100%">
+</div>
 
-2. Учим</br>
+3. Учим</br>
 ![scheme](./doc/img/001.PNG)
 
-3. Фиксируем результат в БД</br>
+4. Фиксируем результат в БД</br>
 ![scheme](./doc/img/003.PNG)
 
 ## Общee описание:
