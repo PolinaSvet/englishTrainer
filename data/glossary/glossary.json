@@ -1,0 +1,210 @@
+{
+  "TableName": "iloveyou",
+  "TableComment": "15 способов сказать I love you",
+  "Data": [
+    {
+      "letter": "I",
+      "word": "I love you to the moon and back",
+      "transcription": "",
+      "translation": "Я люблю тебя больше всего на свете",
+      "example": [
+        {
+          "ex1": "I love you to infinity and beyond and I don’t want you to suffer.",
+          "ex2": "Я бесконечно тебя люблю и не хочу, чтобы ты страдал."
+        }
+      ]
+    },
+    {
+      "letter": "Y",
+      "word": "You are the love of my life",
+      "transcription": "",
+      "translation": "Ты любовь всей моей жизни",
+      "example": [
+        {
+          "ex1": "You are the love of my life.",
+          "ex2": "Ты любовь всей моей жизни."
+        },
+        {
+          "ex1": "You are the light of my life, dear. I’ve never been that happy before.",
+          "ex2": "Ты свет моей жизни, дорогая. Я никогда раньше не был так счастлив."
+        }
+      ]
+    },
+    {
+      "letter": "I",
+      "word": "I’m in love with you",
+      "transcription": "",
+      "translation": "Я влюблен(а) в тебя",
+      "example": [
+        {
+          "ex1": "I’m deeply in love with you, my angel.",
+          "ex2": "Я по уши в тебя влюблен, мой ангел."
+        },
+        {
+          "ex1": "I’ve always been head over heels in love with you, Kate.",
+          "ex2": "Я всегда был без памяти от тебя, Кейт."
+        }
+      ]
+    },
+    {
+      "letter": "I",
+      "word": "I adore you",
+      "transcription": "",
+      "translation": "Я обожаю тебя",
+      "example": [
+        {
+          "ex1": "I adore you.",
+          "ex2": "Я обожаю тебя."
+        }
+      ]
+    },
+    {
+      "letter": "I",
+      "word": "I’m crazy about you",
+      "transcription": "",
+      "translation": "Я без ума от тебя",
+      "example": [
+        {
+          "ex1": "I’m crazy about you.",
+          "ex2": "Я без ума от тебя.."
+        },
+        {
+          "ex1": "I can’t wait for our meeting. I’m nuts about you.",
+          "ex2": "Я не могу дождаться нашей встречи. Я без ума от тебя."
+        }
+      ]
+    },
+    {
+      "letter": "I",
+      "word": "I have a crush on you",
+      "transcription": "",
+      "translation": "Я влюблен(а) в тебя",
+      "example": [
+        {
+          "ex1": "I have a crush on you.",
+          "ex2": "Я влюблен в тебя.."
+        },
+        {
+          "ex1": "I have a huge crush on you, Mary, and I don’t know what to do.",
+          "ex2": "Я по уши влюблен в тебя, Мэри, и не знаю, что делать."
+        }
+      ]
+    },
+    {
+      "letter": "I",
+      "word": "I have feelings for you",
+      "transcription": "",
+      "translation": "У меня к тебе чувства",
+      "example": [
+        {
+          "ex1": "I still have feelings for you.",
+          "ex2": "У меня все еще есть чувства к тебе."
+        }
+      ]
+    },
+    {
+      "letter": "I",
+      "word": "I’m devoted to you",
+      "transcription": "",
+      "translation": "Я предан(а) тебе",
+      "example": [
+        {
+          "ex1": "I meant, that’s how devoted I am to you.",
+          "ex2": "Я имел ввиду, вот как я предан тебе."
+        }
+      ]
+    },
+    {
+      "letter": "I",
+      "word": "I cherish you",
+      "transcription": "",
+      "translation": "Я дорожу тобой",
+      "example": [
+        {
+          "ex1": "’’I cherish you, my precious.’’ Mmm, nah.",
+          "ex2": "«Я дорожу тобой, мое сокровище». Ммм, нет."
+        }
+      ]
+    },
+    {
+      "letter": "Y",
+      "word": "You complete me",
+      "transcription": "",
+      "translation": "Ты дополняешь меня",
+      "example": [
+        {
+          "ex1": "You complete me.",
+          "ex2": "Ты дополняешь меня."
+        }
+      ]
+    },
+    {
+      "letter": "Y",
+      "word": "You mean the world to me",
+      "transcription": "",
+      "translation": "Ты для меня целый мир",
+      "example": [
+        {
+          "ex1": "You mean the world to me.",
+          "ex2": "Ты для меня целый мир."
+        },
+        {
+          "ex1": "You are all the world to me, Susan, and I’ll never leave you.",
+          "ex2": "Ты для меня целый мир, Сьюзан, и я никогда тебя не оставлю."
+        }
+      ]
+    },
+    {
+      "letter": "Y",
+      "word": "You rock my world",
+      "transcription": "",
+      "translation": "Ты переворачиваешь мой мир",
+      "example": [
+        {
+          "ex1": "Yeah, you rock my world.",
+          "ex2": "Да, ты переворачиваешь мой мир."
+        }
+      ]
+    },
+    {
+      "letter": "Y",
+      "word": "You are my one and only",
+      "transcription": "",
+      "translation": "Ты мой (моя) единственный(-ая) и неповторимый(-ая)",
+      "example": [
+        {
+          "ex1": "You’re my one and only, Blu.",
+          "ex2": "Ты мой единственный и неповторимый, Голубчик."
+        }
+      ]
+    },
+    {
+      "letter": "Y",
+      "word": "You are my everything",
+      "transcription": "",
+      "translation": "Ты мое все",
+      "example": [
+        {
+          "ex1": "'To my special valentine, you are my everything.”",
+          "ex2": "«Моему особенному любимому человеку, ты мое все»."
+        }
+      ]
+    },
+    {
+      "letter": "M",
+      "word": "My heart belongs to you",
+      "transcription": "",
+      "translation": "Мое сердце принадлежит тебе",
+      "example": [
+        {
+          "ex1": "'Together for eternity, my heart belongs to you.'",
+          "ex2": "«Вместе на века, мое сердце принадлежит тебе»."
+        },
+        {
+          "ex1": "April, whatever happens, my heart is yours forever.",
+          "ex2": "Эйприл, что бы ни случилось, мое сердце твое навеки."
+        }
+      ]
+    }
+  ]
+}

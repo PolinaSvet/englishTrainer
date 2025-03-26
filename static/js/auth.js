@@ -13,7 +13,6 @@ document.getElementById("authForm").addEventListener("submit", async (e) => {
     let method = "DELETE";
     let authTitel = document.getElementById("authTitel")?.textContent;
 
-    console.log(":"+authTitel+":")
 
     if (authTitel === "Login") {
         endpoint = "/auth/login";
@@ -22,7 +21,6 @@ document.getElementById("authForm").addEventListener("submit", async (e) => {
         endpoint = "/auth/register";
         method = "POST";
     }
-    console.log(endpoint,method)
 
     const response = await fetch(endpoint, {
         method: method,
@@ -35,7 +33,6 @@ document.getElementById("authForm").addEventListener("submit", async (e) => {
     const authError = document.getElementById("authError");
     if (response.ok) {
         const user = await response.json();
-        console.log(user)
         localStorage.setItem("user", JSON.stringify(user)); // Сохраняем данные пользователя
         authError.textContent = "Success!";
         authError.classList.remove("failure");

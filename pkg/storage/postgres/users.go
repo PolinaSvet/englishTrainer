@@ -20,6 +20,7 @@ type Users struct {
 	Mail     string `json:"mail"`
 	Telega   string `json:"telega"`
 	Password string `json:"password"`
+	DtAdd    int    `json:"dt_add"`
 }
 
 func (s *Storage) InsertUsers(jsonRequest map[string]interface{}) (int, error) {
@@ -74,6 +75,7 @@ func (s *Storage) ViewUsers(jsonRequest map[string]interface{}) ([]Users, error)
 			&t.Mail,
 			&t.Telega,
 			&t.Password,
+			&t.DtAdd,
 		)
 		if err != nil {
 			return nil, err

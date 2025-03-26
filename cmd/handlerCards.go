@@ -60,6 +60,7 @@ func handleCardRequest(w http.ResponseWriter, session *Session) {
 
 	data := TemplateData{
 		Cards:   session.Cards,
+		User:    session.User,
 		Message: fmt.Sprintf("%v", session.ErrorMsg),
 	}
 
@@ -80,43 +81,62 @@ func handleCardRequest(w http.ResponseWriter, session *Session) {
 // 2. Получили запрос на фиксацию результата
 func HandlerCardsFix(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("cardsFixHandler")
-	//session := GetOrCreateSession(w, r)
+	session := GetOrCreateSession(w, r)
 
-	var p interface{}
-	err := json.NewDecoder(r.Body).Decode(&p)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
+	// Если пользователь зарегистрировван. Сохраняем данные в БД
+	if session.UserLogin {
 
-	// Создаем контекст с таймаутом в 2 секунды
-	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
-	defer cancel()
-
-	// Канал для получения карточек и ошибки
-	cardsChan := make(chan *cardlern.Cards, 1)
-	errChan := make(chan error, 1)
-
-	go func() {
-
-		cards, err := initializeCards(map[string]interface{}{
-			"limit": 5,
-		})
+		var receivedData TemplateDataReceived
+		err := json.NewDecoder(r.Body).Decode(&receivedData)
 		if err != nil {
-			errChan <- err
+			http.Error(w, fmt.Sprintf("Error decoding JSON: %v", err), http.StatusBadRequest)
 			return
 		}
-		cardsChan <- cards
-	}()
 
-	// Ожидаем завершения инициализации или таймаута. Отправляем данные клиенту
-	select {
-	case _ = <-cardsChan:
+		// Создаем контекст с таймаутом в 2 секунды
+		ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
+		defer cancel()
+
+		// Канал для получения карточек и ошибки
+		cardsChan := make(chan bool, 1)
+		errChan := make(chan error, 1)
+
+		go func() {
+
+			for _, card := range receivedData.Cards.Data {
+				query := map[string]interface{}{
+					"id":          card.RecordsId,
+					"users_id":    session.User.Id,
+					"glossary_id": card.Id,
+					"catalogs_id": card.CatalogId,
+					"attempt":     card.Attempt,
+					"guess":       card.Guess,
+				}
+
+				// Загружаем данные из базы
+				_, err := SRV.dbPool.UpdateRecords(query)
+				if err != nil {
+					errChan <- fmt.Errorf("Ошибка записи данных:", err)
+					return
+				}
+			}
+			cardsChan <- true
+
+		}()
+
+		// Ожидаем завершения инициализации или таймаута. Отправляем данные клиенту
+		select {
+		case _ = <-cardsChan:
+			w.WriteHeader(http.StatusOK)
+		case _ = <-errChan:
+			w.WriteHeader(http.StatusBadRequest)
+		case <-ctx.Done():
+			w.WriteHeader(http.StatusGatewayTimeout)
+		}
+
+	} else {
+		// Если пользователь не зарегистрировван. Просто поздравляем
 		w.WriteHeader(http.StatusOK)
-	case _ = <-errChan:
-		w.WriteHeader(http.StatusBadRequest)
-	case <-ctx.Done():
-		w.WriteHeader(http.StatusGatewayTimeout)
 	}
 
 }

@@ -15,12 +15,21 @@ function initGame() {
     document.getElementById("congrats-container").style.display = "none";
 
     document.getElementById("congrats-information").innerText = "";
+    //document.getElementById("btn-fix").disabled = false;
 
     currentCardsData = JSON.parse(JSON.stringify(window.cardsData));
     currentScoreGuess = window.scoreGuess;
     currentScoreAll = window.scoreAll;
     currentFinish = window.finish;
     currentIsSart = false;
+
+    if (window.user.id == 0) 
+    {
+        document.getElementById("btn-fix").disabled = true;
+        localStorage.removeItem("user");
+        updateAuthMenu(); 
+    }
+    
 
     if (currentCardsData == null){
         showAlarm(String(window.message))
@@ -160,7 +169,7 @@ function sortTable(column) {
 
 function checkAnswer(card, answer) {
     const cardElement = document.querySelector('.card');
-
+    
     if (card.translation === answer) {
         currentScoreGuess++;
         card.guess = true;
@@ -171,6 +180,8 @@ function checkAnswer(card, answer) {
         cardElement.style.backgroundColor = "red";
         cardElement.style.boxShadow = "0 0 10px red";
     }
+    
+    
 
     setTimeout(() => {
         cardElement.style.backgroundColor = "";
@@ -188,11 +199,15 @@ function flipCard() {
 
 function sendDataToServer() {
 
+    document.getElementById("btn-fix").disabled = true;
+
     const cardData = {
-        data: JSON.parse(JSON.stringify(currentCardsData)),
-        scoreGuess: currentScoreGuess,
-        scoreAll: currentScoreAll,
-        finish: currentFinish
+        cards: {
+            data: JSON.parse(JSON.stringify(currentCardsData)),
+            scoreGuess: currentScoreGuess,
+            scoreAll: currentScoreAll,
+            finish: currentFinish
+        }
     };
 
     fetch("/cards", {

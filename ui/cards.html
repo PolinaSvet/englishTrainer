@@ -2,6 +2,7 @@
 
 {{ block "scripts" . }}
 <script src="/static/js/cards.js"></script>
+<script src="/static/js/auth_base.js"></script>
 {{ end }}
 
 {{ define "content" }}
@@ -56,10 +57,10 @@
     <div class="congrats-container item" id="congrats-container">
         <h2 id="congrats-information"></h2>
         <div class="buttons">
-            <button class="button" onclick="initGame()">Пройти заново</button>
-            <button class="button" onclick="sendDataToServer()">Зафиксировать результат</button>
-            <button class="button" onclick="startGame()">Следующие слова</button>
-            <button class="button" onclick="homePage()">Home</button>
+            <button class="button" id="btn-start" onclick="initGame()">Пройти заново</button>
+            <button class="button" id="btn-fix" onclick="sendDataToServer()">Зафиксировать результат</button>
+            <button class="button" id="btn-next" onclick="cardsPage()">Следующие слова</button>
+            <button class="button" id="btn-home" onclick="homePage()">Home</button>
         </div>
     </div>
 </div>
@@ -72,6 +73,7 @@
     window.scoreAll = {{ .Cards.ScoreAll }};
     window.finish = {{ .Cards.Finish }};
     window.message = {{ .Message }};
+    window.user = {{ .User }};
     initGame();
 </script>
 {{ end }}

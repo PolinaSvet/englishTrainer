@@ -14,17 +14,16 @@ type ExampleColumn struct {
 
 type Card struct {
 	Id            int             `json:"id"`
-	MarkId        int             `json:"mark_id"`
-	MarkName      string          `json:"mark_name"`
-	LetterId      int             `json:"letter_id"`
-	LetterName    string          `json:"letter_name"`
+	Letter        string          `json:"letter"`
 	Word          string          `json:"word"`
 	Transcription string          `json:"transcription"`
 	Translation   string          `json:"translation"`
 	Example       []ExampleColumn `json:"example"`
 	DtAdd         int             `json:"dt_add"`
-	DtAddTxt      string          `json:"dt_add_txt"`
 	Enable        bool            `json:"enable"`
+	CatalogId     int             `json:"catalog_id"`
+	UsersId       int             `json:"users_id"`
+	RecordsId     int             `json:"records_id"`
 	Attempt       int             `json:"attempt"`
 	Guess         bool            `json:"guess"`
 	Answers       []string        `json:"answers"`
@@ -127,19 +126,18 @@ func convertMapToCard(data []map[string]interface{}) []Card {
 	for _, item := range data {
 		card := Card{
 			Id:            int(item["id"].(int)),
-			MarkId:        int(item["mark_id"].(int)),
-			MarkName:      item["mark_name"].(string),
-			LetterId:      int(item["letter_id"].(int)),
-			LetterName:    item["letter_name"].(string),
+			Letter:        item["letter"].(string),
 			Word:          item["word"].(string),
 			Transcription: item["transcription"].(string),
 			Translation:   item["translation"].(string),
 			Example:       convertInterfaceToExampleColumn(item["example"]),
 			DtAdd:         int(item["dt_add"].(int)),
-			DtAddTxt:      item["dt_add_txt"].(string),
 			Enable:        item["enable"].(bool),
-			Attempt:       0,     // default
-			Guess:         false, // default
+			CatalogId:     int(item["catalog_id"].(int)),
+			UsersId:       int(item["users_id"].(int)),
+			RecordsId:     int(item["records_id"].(int)),
+			Attempt:       int(item["attempt"].(int)),
+			Guess:         item["guess"].(bool),
 		}
 		cards = append(cards, card)
 	}

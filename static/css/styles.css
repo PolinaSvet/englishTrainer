@@ -11,6 +11,10 @@
     --secondary-color: #ECEBE9;
     --secondary-color-font: #000000;
 
+    --disabled-color: #cccccc;
+    --disabled-font-color: #666666;
+    --disabled-border-color: #aaaaaa;
+
     
 
     --container-max-width: 600px;
@@ -193,6 +197,14 @@ nav ul li a {
 .button:hover {
     background-color: var(--secondary-color);
     color: var(--secondary-color-font);
+}
+
+.button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    background-color: var(--primary-color);
+    color: var(--primary-color-font);
+    border-color: var(--primary-color);
 }
 
 .words-table {

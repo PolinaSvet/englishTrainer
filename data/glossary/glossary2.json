@@ -1,0 +1,170 @@
+{
+  "TableName": "greeting",
+  "TableComment": "Как сказать «да» в английском языке",
+  "Data": [
+    {
+      "letter": "S",
+      "word": "Sounds great!",
+      "transcription": "",
+      "translation": "Отлично!",
+      "example": [
+        {
+          "ex1": "That sounds like a great idea! I think that could help us handle complaints more efficiently.",
+          "ex2": "Это звучит как отличная идея! Думаю, это может помочь нам более эффективно рассматривать жалобы."
+        },
+        {
+          "ex1": "Sounds good! See you at the entrance then.",
+          "ex2": "Хорошо! Тогда увидимся у входа."
+        },
+        {
+          "ex1": "[1]: All you have to do today is watch and listen. And when I talk about a strategy packet, hand them one of those.\n[2]: Sounds great.",
+          "ex2": "[1]: Сегодня ты только смотри и слушай. Когда я заговорю о стратегической папке, ты ее вручишь.\n[2]: Отлично."
+        }
+      ]
+    },
+    {
+      "letter": "Y",
+      "word": "You bet!",
+      "transcription": "",
+      "translation": "Еще как!",
+      "example": [
+        {
+          "ex1": "[1]: Are you ready for an exciting and challenging day?\n[2]: You bet!",
+          "ex2": "[1]: Вы готовы к захватывающему и многообещающему дню?\n[2]: Еще как!"
+        }
+      ]
+    },
+    {
+      "letter": "B",
+      "word": "By all means.",
+      "transcription": "",
+      "translation": "Разумеется.",
+      "example": [
+        {
+          "ex1": "[1]: More phosphate has been discovered in Togo, and a U.S. company plans to mine it. Now, if you’ll excuse me, I have a celebration to return to.\n[2]: By all means.",
+          "ex2": "[1]: Я знаю, в Того обнаружили большие залежи фосфоритов, и США планирует начать их добычу. А теперь, если позволите, мне пора вернуться к празднику.\n[2]: Разумеется."
+        }
+      ]
+    },
+    {
+      "letter": "Y",
+      "word": "You’re on!",
+      "transcription": "",
+      "translation": "По рукам! / Договорились!",
+      "example": [
+        {
+          "ex1": "[1]: I would like to show you my collection of art.\n[2]: I was waiting for you to ask.\n[1]: Then you have to find me.\n[2]: You’re on.",
+          "ex2": "[1]: Я бы хотел показать вам свою коллекцию живописи.\n[2]: Ждала, когда вы предложите.\n[1]: Так найдите меня.\n[2]: Договорились."
+        }
+      ]
+    },
+    {
+      "letter": "N",
+      "word": "Naturally.",
+      "transcription": "",
+      "translation": "Конечно.",
+      "example": [
+        {
+          "ex1": "[1]: Perhaps we can settle this like gentlemen. You do play polo, I take it? I suggest we play as they do in Slovenia.\n[2]: A fine city.\n[1]: Country.\n[2]: Naturally.",
+          "ex2": "[1]: Может, решим этот вопрос, как джентльмены? Вы ведь играете в поло? Сыграем так, как играют в Словении.\n[2]: Дивный город.\n[1]: Страна.\n[2]: Конечно."
+        }
+      ]
+    },
+    {
+      "letter": "T",
+      "word": "That’s right!",
+      "transcription": "",
+      "translation": "Верно! / Точно!",
+      "example": [
+        {
+          "ex1": "[1]: Now I remember. All hail the rightful ruler of Sugar Rush Princess Vanellope.\n[2]: I remember. She’s our princess!\n[1]: Oh, that’s right!",
+          "ex2": "[1]: Теперь помню. Приветствуйте все законного правителя «Сладкого форсажа» Принцессу Ванилопу.\n[2]: Я вспомнила. Она наша принцесса!\n[1]: Точно!"
+        }
+      ]
+    },
+    {
+      "letter": "I",
+      "word": "I’ll say!",
+      "transcription": "",
+      "translation": "Это точно! / Сто пудов!",
+      "example": [
+        {
+          "ex1": "[1]: What do you think? Radiator Springs looks pretty good on me.\n[2]: I’ll say!",
+          "ex2": "[1]: Что скажешь? Radiator Springs сидит довольно хорошо на мне.\n[2]: Сто пудов!"
+        }
+      ]
+    },
+    {
+      "letter": "I",
+      "word": "I don’t see why not.",
+      "transcription": "",
+      "translation": "А почему нет?",
+      "example": [
+        {
+          "ex1": "[1]: That picture, Boy with Apple, is priceless. Understand?\n[2]: Can I see it?\n[1]: I don’t see why not.",
+          "ex2": "[1]: Эта картина, «Мальчик с яблоком», бесценна. Понимаешь?\n[2]: Взглянем?\n[1]: А почему нет?"
+        }
+      ]
+    },
+    {
+      "letter": "I",
+      "word": "I’d love to!",
+      "transcription": "",
+      "translation": "Я с радостью! / С удовольствием!",
+      "example": [
+        {
+          "ex1": "[1]: I don’t suppose you’d like to go with me to the beauty parlor?\n[2]: I’d love to.",
+          "ex2": "[1]: Не хочешь сходить со мной в салон красоты?\n[2]: Я с радостью."
+        }
+      ]
+    },
+    {
+      "letter": "C",
+      "word": "Consider it done.",
+      "transcription": "",
+      "translation": "Считай, что дело сделано.",
+      "example": [
+        {
+          "ex1": "[1]: I need you to fire Elliot Alderson. Ban him from any and all E Corp branches and subsidiaries. I’ll return the favor.\n[2]: And this is your request?\n[1]: It is.\n[2]: Consider it done.",
+          "ex2": "[1]: Нужно уволить Эллиота Алдерсона. Закройте ему доступ ко всем отделениям и дочерним компаниями E Corp. Я отплачу за услугу.\n[2]: В этом и состоит твоя просьба?\n[1]: Верно.\n[2]: Считай, что дело сделано."
+        }
+      ]
+    },
+    {
+      "letter": "S",
+      "word": "Sure thing.",
+      "transcription": "",
+      "translation": "Конечно. / Не вопрос.",
+      "example": [
+        {
+          "ex1": "[1]: If I let you in, we are not braiding each other’s hair and drinking Cosmos. You have one hour. And I get first dibs on what’s in the bag.\n[2]: Sure thing.",
+          "ex2": "[1]: Если я тебя впущу, мы не будем заплетать друг другу косички и пить коктейли. У тебя есть час. И я заберу все, что у тебя в пакете.\n[2]: Конечно."
+        }
+      ]
+    },
+    {
+      "letter": "C",
+      "word": "Count me in.",
+      "transcription": "",
+      "translation": "Я в деле.",
+      "example": [
+        {
+          "ex1": "[1]: You want Polly to feel loved and supported, right? Luckily, I’ve been percolating on an idea, hellishly simple in its conception. What if my mom and I were to host a baby shower?\n[2]: Count me in.",
+          "ex2": "[1]: Ты хочешь, чтобы Полли чувствовала любовь и поддержку, так? К счастью, на меня снизошла идея — простая, как и все гениальное. Что, если мы с мамой устроим праздник в честь предстоящего рождения ребенка?\n[2]: Я в деле."
+        }
+      ]
+    },
+    {
+      "letter": "I",
+      "word": "I’d be happy to!",
+      "transcription": "",
+      "translation": "С превеликой радостью! / С превеликим удовольствием!",
+      "example": [
+        {
+          "ex1": "[1]: Count Olaf has a tattoo on his left ankle. It looks like an eye.\n[2]: I hate to trouble you, sir, but just to put the children’s minds at ease, would you be so kind as to show us your ankle?\n[1]: I’d be happy to.",
+          "ex2": "[1]: У графа Олафа на лодыжке татуировка в виде глаза.\n[2]: Простите за беспокойство, сэр, но не могли бы вы успокоить детей и показать нам свою лодыжку?\n[1]: С превеликим удовольствием."
+        }
+      ]
+    }
+  ]
+}

@@ -2,25 +2,24 @@
 	script to create database structure
 */
 
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS catalogsglos CASCADE;
 
 
-CREATE TABLE users (
+CREATE TABLE catalogsglos (
     id BIGSERIAL PRIMARY KEY,
-    name TEXT NOT NULL,
-    mail TEXT UNIQUE NOT NULL,
-    telega TEXT,
-    password TEXT NOT NULL
+	glossary_id BIGINT REFERENCES glossary(id) DEFAULT 0,
+	catalogs_id BIGINT REFERENCES catalogs(id) DEFAULT 0,
+	dt_add BIGINT NOT NULL DEFAULT (EXTRACT(EPOCH FROM now()) * 1000)::BIGINT
 );
-COMMENT ON TABLE users IS 'Table for users studied';
+COMMENT ON TABLE catalogsglos IS 'Table for list of filter for words';
 
 
-DROP FUNCTION IF EXISTS f_users_insert, f_users_update, f_users_delete, f_users_view;
+DROP FUNCTION IF EXISTS f_catalogsglos_insert, f_catalogsglos_update, f_catalogsglos_delete, f_catalogsglos_view;
 --=======================
---1::: table: letter
+--1::: table: catalogsglos
 --=======================
 --insert
-CREATE FUNCTION f_users_insert(
+CREATE FUNCTION f_catalogsglos_insert(
 		json_data jsonb
 ) 
 RETURNS jsonb AS $$
@@ -31,20 +30,18 @@ DECLARE
 	json_result jsonb;
 BEGIN
 
-	INSERT INTO users (
-		name,
-		mail,
-		telega,
-		password
+	INSERT INTO catalogsglos (
+		glossary_id,
+		catalogs_id,
+		dt_add
 	)    
 	VALUES (
-		(json_data ->> 'name')::TEXT,
-		(json_data ->> 'mail')::TEXT,
-		(json_data ->> 'telega')::TEXT,
-		(json_data ->> 'password')::TEXT
+		(json_data ->> 'glossary_id')::BIGINT,
+		(json_data ->> 'catalogs_id')::BIGINT,
+		(EXTRACT(EPOCH FROM now()) * 1000)::BIGINT
 	) 
 	RETURNING id INTO new_id;
-	
+
 	IF new_id IS NULL THEN
 		RAISE EXCEPTION 'Parameter value cannot be null. ';
 	END IF;
@@ -63,7 +60,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 --update
-CREATE FUNCTION f_users_update(
+CREATE FUNCTION f_catalogsglos_update(
 		json_data jsonb
 ) 
 RETURNS jsonb AS $$
@@ -74,14 +71,14 @@ DECLARE
 	json_result jsonb;
 BEGIN
 
-	UPDATE users SET
-		name = (json_data ->> 'name')::TEXT,
-		mail = (json_data ->> 'mail')::TEXT,
-		telega = (json_data ->> 'telega')::TEXT,
-		password = (json_data ->> 'password')::TEXT
+	UPDATE catalogsglos SET
+		glossary_id = (json_data ->> 'glossary_id')::BIGINT,
+		catalogs_id = (json_data ->> 'catalogs_id')::BIGINT,
+		dt_add = (EXTRACT(EPOCH FROM now()) * 1000)::BIGINT
+
 	WHERE id = (json_data ->> 'id')::BIGINT 
 	RETURNING id INTO new_id;
-	
+
 	IF new_id IS NULL THEN
 		RAISE EXCEPTION 'Parameter value cannot be null. ';
 	END IF;
@@ -101,7 +98,7 @@ $$ LANGUAGE plpgsql;
 
 
 --delete
-CREATE FUNCTION f_users_delete(
+CREATE FUNCTION f_catalogsglos_delete(
 		json_data jsonb
 ) 
 RETURNS jsonb AS $$
@@ -111,7 +108,7 @@ DECLARE
 	json_result jsonb;
 BEGIN
 
-	DELETE FROM users WHERE id = (json_data ->> 'id')::BIGINT; 
+	DELETE FROM catalogsglos WHERE id = (json_data ->> 'id')::BIGINT; 
 
 	SELECT json_build_object('id',(json_data ->> 'id')::BIGINT,'err','') INTO json_result;
   	RETURN json_result;
@@ -127,71 +124,34 @@ END;
 $$ LANGUAGE plpgsql;
 
 --select view
-CREATE FUNCTION f_users_view(
+CREATE FUNCTION f_catalogsglos_view(
 		json_data jsonb
 ) 
 RETURNS TABLE (
 	id BIGINT,
     name TEXT,
-	mail TEXT,
-	telega TEXT,
-	password TEXT
+	comment TEXT,
+	dt_add BIGINT,
+	enable BOOL
 ) AS $$
 DECLARE
   	par_id BIGINT = 0;
-	par_mail TEXT = '';
-
 BEGIN
 
 	IF (json_data ->> 'id') IS NOT NULL THEN
 		par_id = (json_data ->> 'id')::BIGINT;
 	END IF;
 
-	IF (json_data ->> 'mail') IS NOT NULL THEN
-		par_mail = (json_data ->> 'mail')::TEXT;
-	END IF;
-
 	RETURN QUERY
-		SELECT users.id,
-			   users.name,  
-			    users.mail,
-			    users.telega,
-				users.password
-		FROM users
+		SELECT catalogsglos.id,
+			   catalogsglos.glossary_id,
+			   catalogsglos.catalogs_id,
+			   catalogsglos.dt_add
+		FROM catalogsglos
 		WHERE
-			(par_id = 0 OR users.id = par_id) and
-			(par_mail = '' OR users.mail = par_mail)
-		ORDER BY users.id;
-	
+			(par_id = 0 OR catalogsglos.id = par_id)
+		ORDER BY catalogsglos.name;
+
 END;
 $$ LANGUAGE plpgsql;
 
-
---users: insert
-DO $$
-DECLARE
-BEGIN
-
-	PERFORM * FROM f_users_insert(('{
-				    "name": "user1",
-			        "mail": "mail1",
-			        "telega": "telega1",
-			        "password": "1"
-				}')::jsonb);
-
-	PERFORM * FROM f_users_insert(('{
-					    "name": "user2",
-				        "mail": "mail2",
-				        "telega": "telega2",
-				        "password": "2"
-					}')::jsonb);
-
-
-
-END;
-$$;
-
-SELECT * FROM f_users_view('{
-    "id": 0
-     
-}'::jsonb);

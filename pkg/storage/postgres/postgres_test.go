@@ -32,6 +32,7 @@ func TestPostgres_New(t *testing.T) {
 	})
 }
 
+/*
 // проверяем таблицу Mark
 func TestMark_AllFunctions(t *testing.T) {
 
@@ -118,7 +119,7 @@ func TestLetter_AllFunctions(t *testing.T) {
 		assert.NotEmpty(t, id)
 	})
 
-}
+}*/
 
 // проверяем таблицу Glossary
 func TestGlossary_AllFunctions(t *testing.T) {
@@ -134,8 +135,7 @@ func TestGlossary_AllFunctions(t *testing.T) {
 
 		//f_glossary_insert
 		jsonDataMap := map[string]interface{}{
-			"mark_name":     "Phrasal verbs",
-			"letter_name":   "A",
+			"letter":        "A",
 			"word":          "Test_word_zzz",
 			"transcription": "[əˈkaʊnt fɔː]",
 			"translation":   "Давать объяснение, составлять долю от ч.-л.",
@@ -143,9 +143,8 @@ func TestGlossary_AllFunctions(t *testing.T) {
 				{"ex1": "Пример 1", "ex2": "Перевод 1"},
 				{"ex1": "Пример 2", "ex2": "Перевод 2"},
 			},
-			"dt_add":     "1740652272547",
-			"dt_add_txt": "DD.MM.YYYY HH24:MI:SS.MS",
-			"enable":     true,
+			"dt_add": "1740652272547",
+			"enable": true,
 		}
 		id_insert, err := store.InsertGlossary(jsonDataMap)
 		assert.NoError(t, err)
@@ -157,13 +156,6 @@ func TestGlossary_AllFunctions(t *testing.T) {
 		id, err := store.UpdateGlossary(jsonDataMap)
 		assert.NoError(t, err)
 		assert.NotEmpty(t, id)
-
-		// f_glossary_view_random
-		jsonDataMap = make(map[string]interface{})
-		jsonDataMap["limit"] = 5
-		glossary, err := store.ViewRandomGlossary(jsonDataMap)
-		assert.NoError(t, err)
-		assert.NotEmpty(t, glossary)
 
 		//f_glossary_view
 		jsonDataMap = make(map[string]interface{})

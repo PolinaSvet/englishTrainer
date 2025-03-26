@@ -9,12 +9,11 @@ import (
 // Table: glossary
 
 const (
-	insertFuncGlossary      = "f_glossary_insert"
-	updateFuncGlossary      = "f_glossary_update"
-	deleteFuncGlossary      = "f_glossary_delete"
-	viewFuncGlossary        = "f_glossary_view"
-	viewRandomFuncGlossary  = "f_glossary_view_random"
-	insertArrayFuncGlossary = "f_glossary_insert_array"
+	insertFuncGlossary     = "f_glossary_insert"
+	updateFuncGlossary     = "f_glossary_update"
+	deleteFuncGlossary     = "f_glossary_delete"
+	viewFuncGlossary       = "f_glossary_view"
+	viewRandomFuncGlossary = "f_glossary_view_random"
 )
 
 type ExampleColumn struct {
@@ -24,19 +23,18 @@ type ExampleColumn struct {
 
 type Glossary struct {
 	Id            int             `json:"id"`
-	MarkId        int             `json:"mark_id"`
-	MarkName      string          `json:"mark_name"`
-	LetterId      int             `json:"letter_id"`
-	LetterName    string          `json:"letter_name"`
+	Letter        string          `json:"letter"`
 	Word          string          `json:"word"`
 	Transcription string          `json:"transcription"`
 	Translation   string          `json:"translation"`
 	Example       []ExampleColumn `json:"example"`
 	DtAdd         int             `json:"dt_add"`
-	DtAddTxt      string          `json:"dt_add_txt"`
 	Enable        bool            `json:"enable"`
-	Attempt       int             `json:"attempt"` //virtual
-	Guess         bool            `json:"guess"`   //virtual
+	CatalogId     int             `json:"catalog_id"`
+	UsersId       int             `json:"users_id"`
+	RecordsId     int             `json:"records_id"`
+	Attempt       int             `json:"attempt"`
+	Guess         bool            `json:"guess"`
 }
 
 // 1. uid
@@ -56,20 +54,6 @@ func (s *Storage) DeleteGlossary(jsonRequest map[string]interface{}) (int, error
 
 	id, err := s.iudGlossary(deleteFuncGlossary, jsonRequest)
 	return id, err
-}
-
-func (s *Storage) InsertArraGlossary(jsonRequest []map[string]interface{}) (int, error) {
-
-	var jsonResponse SqlResponse
-	err := s.db.QueryRow(context.Background(), "SELECT * FROM "+insertArrayFuncGlossary+"($1);", jsonRequest).Scan(&jsonResponse)
-	if err != nil {
-		return 0, err
-	}
-
-	if jsonResponse.Err != "" {
-		return 0, errors.New(jsonResponse.Err)
-	}
-	return jsonResponse.ID, nil
 }
 
 func (s *Storage) iudGlossary(nameFunction string, jsonRequest map[string]interface{}) (int, error) {
@@ -112,17 +96,18 @@ func (s *Storage) ViewRandomGlossary(jsonRequest map[string]interface{}) ([]map[
 		// Создаем map для текущего Glossary
 		m := map[string]interface{}{
 			"id":            glossary.Id,
-			"mark_id":       glossary.MarkId,
-			"mark_name":     glossary.MarkName,
-			"letter_id":     glossary.LetterId,
-			"letter_name":   glossary.LetterName,
+			"letter":        glossary.Letter,
 			"word":          glossary.Word,
 			"transcription": glossary.Transcription,
 			"translation":   glossary.Translation,
 			"example":       exampleMaps,
 			"dt_add":        glossary.DtAdd,
-			"dt_add_txt":    glossary.DtAddTxt,
 			"enable":        glossary.Enable,
+			"catalog_id":    glossary.CatalogId,
+			"users_id":      glossary.UsersId,
+			"records_id":    glossary.RecordsId,
+			"attempt":       glossary.Attempt,
+			"guess":         glossary.Guess,
 		}
 		result = append(result, m)
 	}
@@ -145,17 +130,18 @@ func (s *Storage) viewGlossary(nameFunction string, jsonRequest map[string]inter
 
 		err = rows.Scan(
 			&t.Id,
-			&t.MarkId,
-			&t.MarkName,
-			&t.LetterId,
-			&t.LetterName,
+			&t.Letter,
 			&t.Word,
 			&t.Transcription,
 			&t.Translation,
 			&exampleData,
 			&t.DtAdd,
-			&t.DtAddTxt,
 			&t.Enable,
+			&t.CatalogId,
+			&t.UsersId,
+			&t.RecordsId,
+			&t.Attempt,
+			&t.Guess,
 		)
 		if err != nil {
 			return nil, err

@@ -31,6 +31,10 @@ type TemplateData struct {
 	Auth    DataAuth        `json:"auth"`
 }
 
+type TemplateDataReceived struct {
+	Cards cardlern.Cards `json:"cards"`
+}
+
 type DataAuth struct {
 	Title      string `json:"title"`
 	ButtonText string `json:"buttonText"`
